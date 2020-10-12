@@ -27,6 +27,8 @@ class AddBook extends Component {
 
     submitForm(e) {
         e.preventDefault();
+
+        if(this.state.name != "" && this.state.genre != "" && this.state.authorId != ""){
         this.props.addBookMutation({
             variables:{
                 name:this.state.name,
@@ -35,6 +37,9 @@ class AddBook extends Component {
             },
             refetchQueries:[{query:getBooksQuery}]
         });
+       } else {
+           alert("Please check the informations!");
+       }
     }
 
     render() {
